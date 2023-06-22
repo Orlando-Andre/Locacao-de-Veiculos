@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.1.final using JasperReports Library version 6.20.1-7584acb244139816654f64e2fd57a00d3e31921e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Relatorio_Simples" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="87eba7f2-d83b-417a-b46f-ccb34c2ab5dc">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[Ik1BUkNBIiAsMTc3LDMwLDcwOWY0MmRmLThjNjktNDE0ZS04ZDAyLTI5ZGMxNGI4NzU2MjsiTU9E
+RUxPIiAsMTUsMTUsMjJiNzZmZDctMzg0Mi00Y2ZmLThjZmYtM2VjMzQ0YmQxOTMzOw==]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT MOD.nome_modelo,
+	M.nome_marca
+FROM "MODELO" MOD
+	INNER JOIN "MARCA" M ON 
+	 MOD.id_marca = M.id_marca 
+ORDER BY M.nome_marca DESC,
+	MOD.nome_modelo ASC]]>
+	</queryString>
+	<field name="nome_modelo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome_modelo"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome_modelo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="MODELO"/>
+	</field>
+	<field name="nome_marca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome_marca"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome_marca"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="MARCA"/>
+	</field>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{nome_marca}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6" uuid="8911ff73-88e9-49ea-898c-971fb92d868c"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Marca]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="100" y="0" width="455" height="32" forecolor="#006699" backcolor="#E6E6E6" uuid="164bf6c7-bde2-45e7-b246-ce1a135950da"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nome_marca}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666" uuid="be151b0f-db69-475e-8037-a37a8f346b93"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="606d4cc5-63e2-428d-a95c-74d5abf520a0"/>
+				<staticText>
+					<reportElement x="20" y="20" width="390" height="43" forecolor="#FFFFFF" uuid="69bd93ca-f5b4-44aa-9f50-3606668adc81"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Listagem de Veículos]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="e1b01acb-45ba-48d2-851b-34d7c1f64c0a"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d6596756-94bc-4168-ba4b-ea2b1acf168e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="92b90f1e-0966-4c49-aab8-02482c9f8309"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[modelo(s)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="419cdab6-5897-4719-9428-f7b9ce62f6bf"/>
+			</line>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="0" width="555" height="20" uuid="4c531726-b11e-4890-994c-cbd4a449f54a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="92b90f1e-0966-4c49-aab8-02482c9f8309"/>
+				</reportElement>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_modelo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="41c91c1a-c8a3-4f66-a185-18483910f354"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="eeb8b793-0dd9-48b4-a4b3-b0b99a4c7c04"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="93f9f1f2-6a17-44fd-8adf-48b0efc0c998"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="426.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleVisao.FXML_LoginControle">
+   <children>
+      <Pane prefHeight="433.0" prefWidth="528.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="imgLogin" fitHeight="128.0" fitWidth="128.0" layoutX="25.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/imagemLogin.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="174.0" layoutY="14.0" prefHeight="43.0" prefWidth="296.0" text="Login de Acesso">
+               <font>
+                  <Font name="Bookman Old Style" size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnEntrar" layoutX="185.0" layoutY="301.0" mnemonicParsing="false" onAction="#btnEntrarOnAction" prefHeight="31.0" prefWidth="281.0" style="-fx-background-color: #88d498;" text="Entrar">
+               <font>
+                  <Font name="Baskerville Old Face" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSair" layoutX="183.0" layoutY="346.0" mnemonicParsing="false" onAction="#btnSairOnAction" prefHeight="31.0" prefWidth="281.0" style="-fx-background-color: #ff6262;" text="Sair">
+               <font>
+                  <Font name="Baskerville Old Face" size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="230.0" layoutY="66.0" text="Entre com suas credenciais">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="181.0" layoutY="123.0" text="Usuário">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="182.0" layoutY="203.0" prefHeight="21.0" prefWidth="68.0" text="Senha" />
+            <PasswordField id="pfSenha" fx:id="pfSenha" layoutX="182.0" layoutY="234.0" prefHeight="31.0" prefWidth="281.0" />
+            <TextField id="txtUsuario" fx:id="txtUsuario" layoutX="182.0" layoutY="151.0" prefHeight="31.0" prefWidth="281.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

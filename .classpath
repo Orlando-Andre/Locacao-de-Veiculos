@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/orlan/OneDrive/Documentos/Faculdade/3º Semestre/Desenvolvimento de software/ProjetoN2LOCACAO_DE_VEICULOS/CODIGO_DO_PROJETO/LOCACAO_DE_VEICULOS/postgresql-42.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/orlan/OneDrive/Documentos/Faculdade/arquivosJasperReport/commons-beanutils-1.9.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/orlan/OneDrive/Documentos/Faculdade/arquivosJasperReport/commons-collections-3.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/orlan/OneDrive/Documentos/Faculdade/arquivosJasperReport/commons-collections4-4.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/orlan/OneDrive/Documentos/Faculdade/arquivosJasperReport/commons-digester-2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/orlan/OneDrive/Documentos/Faculdade/arquivosJasperReport/commons-logging-1.2.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/orlan/OneDrive/Documentos/Faculdade/arquivosJasperReport/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/orlan/OneDrive/Documentos/Faculdade/arquivosJasperReport/fontbox-2.0.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/orlan/OneDrive/Documentos/Faculdade/arquivosJasperReport/groovy-all-2.4.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/orlan/OneDrive/Documentos/Faculdade/arquivosJasperReport/jasperreports-6.20.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/orlan/OneDrive/Documentos/Faculdade/arquivosJasperReport/jasperreports-custom-visualization-6.20.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/orlan/OneDrive/Documentos/Faculdade/arquivosJasperReport/jasperreports-fonts-6.20.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/orlan/OneDrive/Documentos/Faculdade/arquivosJasperReport/jasperreports-functions-6.20.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/orlan/OneDrive/Documentos/Faculdade/arquivosJasperReport/pdfbox-2.0.17.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
