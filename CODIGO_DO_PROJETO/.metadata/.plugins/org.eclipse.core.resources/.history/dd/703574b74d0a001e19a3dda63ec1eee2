@@ -1,0 +1,27 @@
+package controleVisao;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+
+public class FXML_RelatoriosControle {
+
+    @FXML
+    private Button simples;
+
+    @FXML
+    private Button complexo;
+
+    @FXML
+    void btnComplexoOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnSimplesOnAction(ActionEvent event) {
+    	
+    	
+
+    }
+
+}

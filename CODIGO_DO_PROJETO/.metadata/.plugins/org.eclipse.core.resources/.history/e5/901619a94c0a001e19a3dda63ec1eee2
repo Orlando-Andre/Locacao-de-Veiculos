@@ -1,0 +1,34 @@
+package controleVisao;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Tab;
+import relatorios.VisualizaRelatorio;
+
+public class FXML_RelatoriosControle implements Initializable {
+
+    @FXML
+    private Tab abaSimples;
+
+    @FXML
+    private Tab abaComplexo;
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+
+		VisualizaRelatorio gp = new VisualizaRelatorio();
+		try {
+			gp.gerarPdf();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+    
+    
+
+}

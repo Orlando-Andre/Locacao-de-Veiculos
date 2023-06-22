@@ -1,0 +1,52 @@
+
+package relatorios;
+
+import java.sql.Connection;
+import java.util.HashMap;
+
+import conexao.Conexao;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
+
+public class VisualizaRelatorio {
+
+	private String path;
+	private String pathReportPackage;
+	
+	public VisualizaRelatorio(){
+		
+	}
+	
+	//Gera pdf
+	public void gerarPdf() throws Exception{
+		
+		Conexao conexao = new Conexao();
+		Connection conn = conexao.getConnection();
+		String caminhoArq = "src\\relatorio\\ListagemDeProdutos.jasper";
+		HashMap parametros = null;
+		JasperPrint jp = JasperFillManager.fillReport(caminhoArq, parametros, conn);
+		
+	
+		JasperViewer.viewReport(jp,false);
+	}
+	
+	public String getPathToReportPackage(){
+		return this.pathReportPackage;
+	}
+	
+	public String getPath(){
+		return this.path;
+	}
+	
+	public static void main(String[] args) throws Exception {
+		VisualizaRelatorio gp = new VisualizaRelatorio();
+		gp.gerarPdf();
+
+	}
+
+}

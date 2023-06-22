@@ -1,0 +1,230 @@
+package controleVisao;
+
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import dao.ClienteDao;
+import dao.MarcaDao;
+import dao.UsuarioDao;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import modelo.Cliente;
+import modelo.Marca;
+import modelo.Usuario;
+import util.Utilidade;
+
+public class FXML_CadastrarClienteControle implements Initializable {
+	
+	@FXML
+    private TabPane tabPane;
+
+    @FXML
+    private Tab abaCadastro;
+
+    @FXML
+    private Label lblCodigo;
+
+    @FXML
+    private TextField txtCodigo;
+
+    @FXML
+    private Label lblCNH;
+
+    @FXML
+    private TextField txtCNH;
+
+    @FXML
+    private Label lblNome;
+
+    @FXML
+    private TextField txtNome;
+
+    @FXML
+    private Label lblCPF;
+
+    @FXML
+    private TextField txtCPF;
+
+    @FXML
+    private Button btnIncluir;
+
+    @FXML
+    private Button btnAlterar;
+
+    @FXML
+    private Button btnExcluir;
+
+    @FXML
+    private Tab abaPesquisa;
+
+    @FXML
+    private Label lblPesquisa;
+
+    @FXML
+    private TextField txtPesquisa;
+
+    @FXML
+    private Button btnPesquisar;
+
+    @FXML
+    private ImageView imgPesquisar;
+    @FXML
+    private TableView<Cliente> tableView;
+
+    @FXML
+    private TableColumn<Cliente, String> tableColumnNome;
+
+    @FXML
+    private Label lblTableView;
+    
+    private ClienteDao cliDao;
+    private Cliente cli;
+    private ObservableList<Cliente> oblClientes;
+    
+    
+    @Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+    	
+    	tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>(){
+   			@Override
+   			public void changed(ObservableValue arg0, Object arg1, Object arg2){
+   				selecionarItemTableViewClientes((Cliente) arg2);
+   			}
+   		});
+    	
+	}
+    
+    @FXML
+    void btnIncluirOnAction(ActionEvent event) {
+    	boolean retorno;
+    	Utilidade u = new Utilidade();
+    	String nomeCli = txtNome.getText();
+    	String cpfCli = txtCPF.getText();
+    	String cnhCli = txtCNH.getText();
+    	
+    	if(nomeCli.length()== 0 || nomeCli.isEmpty()){
+    		Utilidade.mensagemErro("Nome inválido. digite novamente");
+    	}else{
+    		if(cpfCli.length()== 0 || cpfCli.isEmpty() || u.validaConteudoInteiro(cpfCli)== false ){
+        		Utilidade.mensagemErro("CPF inválido. digite novamente");
+        	}else{
+        		if(cnhCli.length()== 0 || cnhCli.isEmpty() || u.validaConteudoInteiro(cnhCli) == false){
+            		Utilidade.mensagemErro("CNH inválido. digite novamente");
+            	}else{
+            		
+            		cli = new Cliente();
+            		
+            		cli.setNomeCli(nomeCli);
+            		cli.setCpf(cpfCli);
+            		cli.setCnh(cnhCli);
+            		
+            		
+            		cliDao = new ClienteDao();
+            		
+            		try{
+            			retorno = cliDao.incluir(cli);
+            			if(retorno){
+            				Utilidade.mensagemInformacao("INCLUSÃO DE CLIENTE REALIZADA COM SUCESSO");
+            			}
+            			else{
+            				Utilidade.mensagemErro("INCLUSÃO DE CLIENTE NÃO REALIZADA");
+            			}
+            		}
+            		catch(SQLException e){
+            			Utilidade.mensagemErro("ERRO DE INCLUSÃO DE CLIENTE");
+            		}
+            		
+            		limpaDadosTela();
+            		
+            	}	
+            }
+        }
+    }
+
+    @FXML
+    void btnAlterarOnAction(ActionEvent event) {
+    	
+        		
+    }
+
+    @FXML
+    void btnExcluirOnAction(ActionEvent event) {
+
+    }
+
+    
+    
+
+    
+
+	@FXML
+    void btnPesquisarOnAction(ActionEvent event) {
+		
+		ArrayList<Cliente> retorno;
+    	String nome = txtPesquisa.getText();
+    	
+    	if(nome.length()== 0 || nome.isEmpty()){
+    		Utilidade.mensagemErro("Nome inválido. digite novamente");
+    	}else{
+    		
+    		cliDao = new ClienteDao();
+    		
+    		try{
+    			retorno = cliDao.consultar(nome);
+    			
+    			if(retorno.size() != 0){
+    				carregarTableView(retorno);
+    				
+    			}
+    			else{
+    				Utilidade.mensagemErro("USUARIO NÃO ENCONTRADO");
+    			}
+    		}
+    		catch(SQLException e){
+    			Utilidade.mensagemErro("ERRO DE PESQUISA DE USUARIOS");
+    		}
+    		
+    	}
+
+    }
+	
+	private void carregarTableView(ArrayList<Cliente> cliList) throws SQLException {
+		tableColumnNome.setCellValueFactory(new PropertyValueFactory<>("nomeCli"));
+    	ArrayList<Cliente> clientes = cliList;
+    	oblClientes = FXCollections.observableArrayList(clientes);
+    	this.tableView.setItems(oblClientes);
+	}
+	
+    
+    public void selecionarItemTableViewClientes(Cliente cli){
+    	this.txtCodigo.setText(Integer.toString(cli.getId_cli()));
+    	this.txtNome.setText(cli.getNomeCli());
+    	this.txtCPF.setText(cli.getCpf());
+    	this.txtCNH.setText(cli.getCnh());
+    	tabPane.getSelectionModel().select(abaCadastro);
+    }
+
+	private void limpaDadosTela() {
+		this.txtNome.setText("");
+		this.txtCPF.setText("");
+		this.txtCNH.setText("");
+		this.txtCodigo.setText("");
+		
+	}
+}

@@ -1,0 +1,16 @@
+package controleVisao;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Tab;
+
+public class FXML_RelatoriosControle {
+
+    @FXML
+    private Tab abaSimples;
+
+    @FXML
+    private Tab abaComplexo;
+    
+    
+
+}

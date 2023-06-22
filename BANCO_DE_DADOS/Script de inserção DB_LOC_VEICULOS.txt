@@ -1,0 +1,37 @@
+INSERT INTO public."USUARIO"(nome, senha, tipo)
+	VALUES 
+	('vicente', 'vicente', 'Administrador'),
+	('orlando', 'orlando', 'Administrador'),
+	('heloisa', 'heloisa', 'Padrão'),
+	('maria', 'maria', 'Padrão'),
+	('flavia', 'flavia', 'Padrão');
+
+
+INSERT INTO public."MARCA"(nome_marca)
+	VALUES 
+	('Fiat'),
+	('Ford'),
+	('Honda'),
+	('Renault'),
+	('Chevrolet');
+
+INSERT INTO public."MODELO"(nome_modelo, id_marca)
+	VALUES 
+	('Uno', 1),
+	('Argo', 1),
+	('EcoSport', 2),
+	('Fusion', 2),
+	('Civic', 3),
+	('City', 3),
+	('Logan', 4),
+	('Sandero', 4),
+	('Cobalt', 5),
+	('Onix', 5);
+
+INSERT INTO public."CLIENTE"(nome_cli, cnh_cli, cpf_cli)
+	VALUES 
+	('João', '1111', '1234'),
+	('Joana', '2222', '4321'),
+	('Pedro', '3333', '5678'),
+	('Augusto', '4444', '8765'),
+	('Carla', '5555', '9876');

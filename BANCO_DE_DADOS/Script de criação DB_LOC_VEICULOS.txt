@@ -1,0 +1,155 @@
+-- Table: public.USUARIO
+
+-- DROP TABLE IF EXISTS public."USUARIO";
+
+CREATE TABLE IF NOT EXISTS public."USUARIO"
+(
+    id_usuario serial,
+    nome character varying COLLATE pg_catalog."default" NOT NULL,
+    senha character varying COLLATE pg_catalog."default" NOT NULL,
+    tipo character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "USUARIO_pkey" PRIMARY KEY (id_usuario)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."USUARIO"
+    OWNER to postgres;
+
+
+
+
+-- Table: public.MARCA
+
+-- DROP TABLE IF EXISTS public."MARCA";
+
+CREATE TABLE IF NOT EXISTS public."MARCA"
+(
+    id_marca serial,
+    nome_marca character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "MARCA_pkey" PRIMARY KEY (id_marca)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."MARCA"
+    OWNER to postgres;
+
+
+
+
+-- Table: public.MODELO
+
+-- DROP TABLE IF EXISTS public."MODELO";
+
+CREATE TABLE IF NOT EXISTS public."MODELO"
+(
+    id_modelo serial,
+    nome_modelo character varying COLLATE pg_catalog."default" NOT NULL,
+    id_marca integer NOT NULL,
+    CONSTRAINT "MODELO_pkey" PRIMARY KEY (id_modelo),
+    CONSTRAINT "Fk-MARCA" FOREIGN KEY (id_marca)
+        REFERENCES public."MARCA" (id_marca) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."MODELO"
+    OWNER to postgres;
+
+
+
+
+-- Table: public.CLIENTE
+
+-- DROP TABLE IF EXISTS public."CLIENTE";
+
+CREATE TABLE IF NOT EXISTS public."CLIENTE"
+(
+    id_cli serial,
+    nome_cli character varying COLLATE pg_catalog."default" NOT NULL,
+    cnh_cli character varying COLLATE pg_catalog."default" NOT NULL,
+    cpf_cli character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "CLIENTE_pkey" PRIMARY KEY (id_cli)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."CLIENTE"
+    OWNER to postgres;
+
+
+
+
+-- Table: public.CARRO
+
+-- DROP TABLE IF EXISTS public."CARRO";
+
+CREATE TABLE IF NOT EXISTS public."CARRO"
+(
+    id_carro serial,
+    id_marca integer NOT NULL,
+    id_modelo integer NOT NULL,
+    placa character varying COLLATE pg_catalog."default" NOT NULL,
+    cor character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "CARRO_pkey" PRIMARY KEY (id_carro),
+    CONSTRAINT "FK_MARCA" FOREIGN KEY (id_marca)
+        REFERENCES public."MARCA" (id_marca) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_MODELO" FOREIGN KEY (id_modelo)
+        REFERENCES public."MODELO" (id_modelo) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."CARRO"
+    OWNER to postgres;
+
+
+-- Table: public.LOCA/CARRO
+
+-- DROP TABLE IF EXISTS public."LOCA/CARRO";
+
+CREATE TABLE IF NOT EXISTS public."LOCA/CARRO"
+(
+    id_loca_carro serial,
+    id_carro integer NOT NULL,
+    id_cliente integer NOT NULL,
+    data_inicial date NOT NULL,
+    data_final date NOT NULL,
+    preco numeric(10,2),
+    CONSTRAINT "LOCA/CARRO_pkey" PRIMARY KEY (id_loca_carro),
+    CONSTRAINT "FK_CARRO" FOREIGN KEY (id_carro)
+        REFERENCES public."CARRO" (id_carro) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_CLIENTE" FOREIGN KEY (id_cliente)
+        REFERENCES public."CLIENTE" (id_cli) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."LOCA/CARRO"
+    OWNER to postgres;
+
+
+
